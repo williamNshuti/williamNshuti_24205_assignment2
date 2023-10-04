@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Sriracha&display=swap");
+
+        body {
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f5f5f5;
+        }
+
+        .header .logo {
+            font-size: 25px;
+            font-family: "Sriracha", cursive;
+            color: #000;
+            text-decoration: none;
+            margin-left: 30px;
+        }
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #f5f5f5;
+            margin-right: 20px;
+        }
+
+        .nav-items a {
+            text-decoration: none;
+            color: #000;
+            padding: 35px 20px;
+        }
+
+        .intro {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 90vh;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%),
+                url("https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .intro h1 {
+            font-family: sans-serif;
+            font-size: 60px;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .intro p {
+            font-size: 20px;
+            color: #d1d1d1;
+            text-transform: uppercase;
+            margin: 20px 0;
+        }
+
+        .intro button {
+            background-color: #5edaf0;
+            color: #000;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        .upload-form {
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            min-width: 500px;
+        }
+
+        .upload-form h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .upload-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .upload-form input[type="file"] {
+            display: none;
+        }
+
+        .upload-form .file-upload-btn {
+            background-color: #5edaf0;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .upload-form .file-upload-btn:hover {
+            background-color: #4ec3d3;
+        }
+
+        .upload-form .file-name {
+            margin-left: 10px;
+        }
+        
+        .language-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid #4ec3d3 ;
+            padding: 8px;
+            margin-left: 8vw;
+        }
+
+        .language-selector .language-btn {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: transparent; /* Background color for language buttons */
+            color: #000;
+            transition: background-color 0.3s ease;
+        }
+
+        .language-selector .language-btn:hover {
+            background-color: #4ec3d3; /* Background color on hover */
+        }
+        
+        .language-selector .active {
+            background-color: #4ec3d3;
+            color: white;
+        }
+        
+          .submit-button {
+            background-color: #ff6600; /* Change the background color */
+            color: #fff; /* Text color */
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        .submit-button:hover {
+            background-color: #e65a00; /* Background color on hover */
+        }
+        
+    </style>
+
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">Student</a>
+        <nav class="nav-items">
+            <a href="#" id="homeLink">Home</a>
+            <a href="#" id="coursesLink">Courses</a>
+            <a href="#" id="transcriptLink">Transcript</a>
+            
+             <div class="language-selector">
+            <button id="englishButton" class="language-btn">English</button>
+            <button id="frenchButton" class="language-btn">French</button>
+            <button id="kinyaButton" class="language-btn">KINYA</button>
+
+        </div>
+        </nav>
+    </header>
+    <main>
+        <div class="intro">
+            <h1>Auca Student</h1>
+            <p>Welcome to your Home Page.</p>
+            <div class="upload-form">
+                <h2 id="uploadDocuments"></h2>
+                <form action="upload" method="post" enctype="multipart/form-data">
+                    <label for="passport"></label>
+                    <input type="file" id="passport" name="passport" accept=".jpg, .jpeg, .png" required>
+                    <label for="passport" class="file-upload-btn"></label>
+                    <span class="file-name"></span>
+                    <br><br>
+
+                    <label for="certificates"></label>
+                    <input type="file" id="certificates" name="certificates" accept=".pdf" required>
+                    <label for="certificates" class="file-upload-btn cert-cert"></label>
+                    <span class="file-name"></span>
+                    <br><br>
+
+                     <input type="submit" value="Submit" class="submit-button"> 
+
+                </form>
+            </div>
+        </div>
+    </main>    
+    <script>
+		
+		document.getElementById('passport').addEventListener('change', function () {
+            const fileName = this.files[0].name;
+            document.querySelector('.file-name').innerText = fileName;
+        });
+
+        document.getElementById('certificates').addEventListener('change', function () {
+            const fileName = this.files[0].name;
+            document.querySelectorAll('.file-name')[1].innerText = fileName;
+        });
+        // Language JSON
+        const languageData = {
+            "en": {
+                "home": "Home",
+                "courses": "Courses",
+                "transcript": "Transcript",
+                "welcome": "Welcome to your Home Page.",
+                "uploadDocuments": "Upload Documents",
+                "passportLabel": "Passport Picture (JPG or PNG):",
+                "certificatesLabel": "Certificates/Diplomas (PDF):",
+                "chooseFile": "Choose File",
+                "uploadButton": "Upload"
+            },
+            "fr": {
+                "home": "Accueil",
+                "courses": "Cours",
+                "transcript": "Transcription",
+                "welcome": "Bienvenue sur votre page d'accueil.",
+                "uploadDocuments": "Télécharger des documents",
+                "passportLabel": "Photo de passeport (JPG ou PNG) :",
+                "certificatesLabel": "Certificats/Diplômes (PDF) :",
+                "chooseFile": "Choisir le fichier",
+                "uploadButton": "Télécharger"
+            } ,
+            "kin": {
+				 "home": "Ahabanza",
+                "courses": "Amasomo",
+                "transcript": "Indangamanota",
+                "welcome": "Murakaze Neza kuri Paji Yanyu.",
+                "uploadDocuments": "Mwohereze Ibisabwa",
+                "passportLabel": "Ifoto Ngufi (JPG or PNG):",
+                "certificatesLabel": "Seritifika/Diplomas (PDF):",
+                "chooseFile": "Muhitemo fayilo",
+                "uploadButton": "Mwoherereze"
+			}
+        };
+
+        // Function to set text content based on the selected language
+        function setTextContent(language) {
+            const data = languageData[language];
+            document.getElementById('homeLink').textContent = data.home;
+            document.getElementById('coursesLink').textContent = data.courses;
+            document.getElementById('transcriptLink').textContent = data.transcript;
+            document.getElementById('uploadDocuments').textContent = data.uploadDocuments;
+            document.querySelector('.intro p').textContent = data.welcome;
+            document.querySelector('label[for="passport"]').textContent = data.passportLabel;
+            document.querySelector('label[for="certificates"]').textContent = data.certificatesLabel;
+            document.querySelector('.file-upload-btn').textContent = data.chooseFile;
+            document.querySelector('.cert-cert').textContent = data.chooseFile;
+            document.querySelector('input[type="submit"]').value = data.uploadButton;
+        }
+
+        // Initial language setting
+        setTextContent('en');
+
+        // Event listeners for language buttons
+        document.getElementById('englishButton').addEventListener('click', () => {
+            setTextContent('en');
+        });
+
+        document.getElementById('frenchButton').addEventListener('click', () => {
+            setTextContent('fr');
+        });
+        
+         document.getElementById('kinyaButton').addEventListener('click', () => {
+            setTextContent('kin');
+        });
+        
+        
+        const englishButton = document.getElementById('englishButton');
+        const frenchButton = document.getElementById('frenchButton');
+         const kinyaButton = document.getElementById('kinyaButton');
+
+
+        englishButton.addEventListener('click', () => {
+            setTextContent('en');
+            // Remove the 'active' class from all buttons
+            englishButton.classList.add('active');
+            frenchButton.classList.remove('active');
+            kinyaButton.classList.remove('active');
+
+        });
+
+        frenchButton.addEventListener('click', () => {
+            setTextContent('fr');
+            // Remove the 'active' class from all buttons
+            frenchButton.classList.add('active');
+            englishButton.classList.remove('active');
+             kinyaButton.classList.remove('active');
+
+        });
+        
+         kinyaButton.addEventListener('click', () => {
+            setTextContent('kin');
+            // Remove the 'active' class from all buttons
+            kinyaButton.classList.add('active');
+            englishButton.classList.remove('active');
+             frenchButton.classList.remove('active');
+
+        });
+
+        // Initial language setting
+        setTextContent('en');
+        englishButton.classList.add('active');  // Set English button as active initially
+    </script>
+</body>
+
+</html>
